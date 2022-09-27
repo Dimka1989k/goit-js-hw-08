@@ -16,17 +16,17 @@ function onFormSubmit(handleSubmit) {
 }
 
 function onFormInput(handleSubmit) {
-  let persistedFilters = localStorage.getItem(LOCALSTORAGE_KEY);
-  persistedFilters = persistedFilters ? JSON.parse(persistedFilters) : {};
-  persistedFilters[handleSubmit.target.name] = handleSubmit.target.value;
-  localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(persistedFilters));
+  let keepFilters = localStorage.getItem(LOCALSTORAGE_KEY);
+  keepFilters = keepFilters ? JSON.parse(keepFilters) : {};
+  keepFilters[handleSubmit.target.name] = handleSubmit.target.value;
+  localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(keepFilters));
 }
 
 function initForm() {
-  let persistedFilters = localStorage.getItem(LOCALSTORAGE_KEY);
-  if (persistedFilters) {
-    persistedFilters = JSON.parse(persistedFilters);
-    Object.entries(persistedFilters).forEach(([name, value]) => {
+  let keepFilters = localStorage.getItem(LOCALSTORAGE_KEY);
+  if (keepFilters) {
+    keepFilters = JSON.parse(keepFilters);
+    Object.entries(keepFilters).forEach(([name, value]) => {
       formRef.elements[name].value = value;
     });
   }
